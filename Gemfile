@@ -21,8 +21,13 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
-  gem 'pry-rails', group: :development
+  gem 'pry-rails'
   gem 'rspec-rails'
+end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

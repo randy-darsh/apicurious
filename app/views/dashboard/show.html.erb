@@ -1,3 +1,8 @@
-<h2>This is your User Page, <%= current_user.name %>, you super cool person!</h2>
+<h3>This is your User Page, <%= current_user.name %>, you are super cool!</h3>
 
 <%= link_to "Logout", "/logout", method: 'delete' %>
+
+<%= current_user.avatar %>
+<%= current_user.followers %>
+<%= current_user.following %>
+<%= current_user.starred_repos %>

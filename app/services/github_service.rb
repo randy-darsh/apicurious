@@ -1,46 +1,55 @@
 class GithubService
+
   def initialize(user)
-    @conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.headers["Authorization"] = "token #{user.oauth_token}"
+    @user = user
+    @conn = Faraday.new(url: 'https://api.github.com/') do |faraday|
+      faraday.headers['Authorization'] = "token #{user.token}"
+      faraday.headers['Accept'] = "application/vnd.github.cloak-preview"
       faraday.adapter Faraday.default_adapter
-      @user = user
     end
   end
 
-  def parse(response)
+  def get_basic_info
+    response = conn.get('/user')
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_user
-    response = @conn.get("/user")
-    parse(response)
+  def get_starred_repos_count
+    response = conn.get('/user/starred')
+    JSON.parse(response.body, symbolize_names: true).count
   end
 
-  def find_starred_repos
-    response = @conn.get("/user/starred")
-    parse(response)
+  def get_recent_commits
+    response = conn.get("/search/commits?q=author:#{user.nickname}&sort=author-date")
+    JSON.parse(response.body, symbolize_names: true)[:items][0..9]
   end
 
-  def find_all_repos
-    response = @conn.get("/user/repos")
-    parse(response)
-  end
-
-  def find_recent_commits
-    commit_hash = {}
-    repos = get_all_repos
-    repos.each do |repo|
-      raw = @conn.get("/repos/#{user.nickname}/#{repo[:name]}/stats/participation")
-      parsed = parse(raw)
-      number = parsed[:owner].sum
-      repo_name = repo[:name]
-      commit_hash[repo_name] = number
+  def following_users
+    following_users = []
+    response = conn.get("/users/#{user.nickname}/following")
+    JSON.parse(response.body, symbolize_names: true).each do |user|
+      following_users << user[:login]
     end
-    commit_hash
-    # parse(response)
+    following_users
+  end
+
+  def get_recent_following_commits
+    following_commits = {}
+    following_users.each do |user_nickname|
+      response = conn.get("/search/commits?q=author:#{user_nickname}&sort=author-date")
+      following_commits[user_nickname] = JSON.parse(response.body, symbolize_names: true)[:items][0..2]
+    end
+    following_commits
+  end
+
+  def get_repos
+    response = conn.get("/users/#{user.nickname}/repos?sort=updated")
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private
 
-  attr_reader :conn, :user
+    attr_reader :conn,
+                :user
+
 end
