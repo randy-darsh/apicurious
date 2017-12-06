@@ -1,8 +1,29 @@
-<h3>This is your User Page, <%= current_user.name %>, you are super cool!</h3>
+<h3>Welcome, <%= current_user.nickname %>, you are super cool!</h3>
 
 <%= link_to "Logout", "/logout", method: 'delete' %>
-
-<%= current_user.avatar %>
-<%= current_user.followers %>
-<%= current_user.following %>
-<%= current_user.starred_repos %>
+<br>
+<br>
+<%= image_tag(@user.image) %><br>
+<p><b>Followers (<%= @user_information[:followers] %>)</b></p>
+<p><b>Following (<%= @user_information[:following] %>)</b></p>
+<p><b>Starred Repos (<%= @starred_repos %>)</b></p>
+<br>
+<br>
+<h3><b>Your Recent Commits</b></h3>
+<% @recent_commits.each do |commit| %>
+  <li>
+    <p><b><%= commit[:repository][:full_name] %></b></p>
+    <p><%= commit[:commit][:message] %></p>
+    <p><%= commit[:commit][:author][:date] %></p><br>
+  </li>
+<% end %>
+<br>
+<br>
+<h3><b>Your Repositories (<%= @repos.count %>)</b></h3>
+<% @repos.each do |repo| %>
+  <li>
+    <p><b><%= repo[:full_name] %></b></p>
+    <p><%= repo[:language] %></p>
+    <p><%= repo[:updated_at] %></p><br>
+  </li>
+<% end %>
