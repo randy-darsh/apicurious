@@ -13,7 +13,7 @@ describe "User can view basic account info" do
 
       expect(current_path).to eq(dashboard_path)
 
-      expect(current_page).to have_content(user.nickname)
+      expect(page).to have_content(user.nickname)
     end
   end
 
