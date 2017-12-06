@@ -9,17 +9,17 @@ class GithubService
     end
   end
 
-  def get_basic_info
+  def user_information
     response = connection.get('/user')
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_starred_repos_count
+  def starred_repos_count
     response = connection.get('/user/starred')
     JSON.parse(response.body, symbolize_names: true).count
   end
 
-  def get_recent_commits
+  def recent_commits
     response = connection.get("/search/commits?q=author:#{user.nickname}&sort=author-date")
     JSON.parse(response.body, symbolize_names: true)[:items][0..9]
   end
@@ -33,7 +33,7 @@ class GithubService
     following_users
   end
 
-  def get_recent_following_commits
+  def recent_following_commits
     following_commits = {}
     following_users.each do |user_nickname|
       response = conn.get("/search/commits?q=author:#{user_nickname}&sort=author-date")
@@ -42,7 +42,7 @@ class GithubService
     following_commits
   end
 
-  def get_repos
+  def repos
     response = connection.get("/users/#{user.nickname}/repos?sort=updated")
     JSON.parse(response.body, symbolize_names: true)
   end

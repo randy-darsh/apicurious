@@ -11,7 +11,7 @@ require 'capybara/rails'
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/cassettes"
   config.hook_into :webmock
-  config.filter_sensitive_data('<USER_TOKEN>') { ENV["USER_TOKEN"]}
+  config.filter_sensitive_data('<GITHUB_USER_TOKEN>') { ENV["GITHUB_USER_TOKEN"]}
 end
 
 # Add additional requires below this line. Rails is not loaded until this point!

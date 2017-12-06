@@ -18,11 +18,12 @@ def stub_omniauth
     uid: "192837465",
     info: {
       nickname: 'randy-darsh',
+      name: 'Randy Springer',
       email: 'person@person.com',
       image: 'https://avatars3.githubusercontent.com/u/22040967?s=460&v=4'
     },
     credentials: {
-      token: ENV["USER_TOKEN"]
+      token: ENV["GITHUB_USER_TOKEN"]
     }
   })
 end
