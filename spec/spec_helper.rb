@@ -24,5 +24,5 @@ def stub_omniauth
     credentials: {
       token: ENV["USER_TOKEN"]
     }
-    })
+  })
 end

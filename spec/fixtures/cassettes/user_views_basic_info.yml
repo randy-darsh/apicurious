@@ -9,12 +9,12 @@ http_interactions:
     headers:
       Authorization:
       - token
+      Accept:
+      - application/vnd.github.cloak-preview
       User-Agent:
       - Faraday v0.12.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 401
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 06 Dec 2017 18:52:42 GMT
+      - Wed, 06 Dec 2017 21:06:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -31,13 +31,13 @@ http_interactions:
       Status:
       - 401 Unauthorized
       X-Github-Media-Type:
-      - github.v3; format=json
+      - github.cloak-preview
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '35'
+      - '0'
       X-Ratelimit-Reset:
-      - '1512589454'
+      - '1512597024'
       Access-Control-Expose-Headers:
       - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
@@ -54,14 +54,14 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Runtime-Rack:
-      - '0.009630'
+      - '0.008373'
       X-Github-Request-Id:
-      - DC01:31B1:1C3574:478B48:5A283C79
+      - E870:31AF:2857E5:53E942:5A285BF1
     body:
       encoding: UTF-8
       string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Wed, 06 Dec 2017 18:52:42 GMT
+  recorded_at: Wed, 06 Dec 2017 21:07:15 GMT
 - request:
     method: get
     uri: https://api.github.com/user/starred
@@ -71,12 +71,12 @@ http_interactions:
     headers:
       Authorization:
       - token
+      Accept:
+      - application/vnd.github.cloak-preview
       User-Agent:
       - Faraday v0.12.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 401
@@ -85,7 +85,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 06 Dec 2017 18:52:42 GMT
+      - Wed, 06 Dec 2017 21:06:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -93,13 +93,13 @@ http_interactions:
       Status:
       - 401 Unauthorized
       X-Github-Media-Type:
-      - github.v3; format=json
+      - github.cloak-preview
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '34'
+      - '0'
       X-Ratelimit-Reset:
-      - '1512589454'
+      - '1512597024'
       Access-Control-Expose-Headers:
       - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
@@ -116,29 +116,29 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Runtime-Rack:
-      - '0.009629'
+      - '0.008383'
       X-Github-Request-Id:
-      - DC02:31B1:1C358E:478BB0:5A283C7A
+      - E871:31B1:2DE3ED:7476CA:5A285BF1
     body:
       encoding: UTF-8
       string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Wed, 06 Dec 2017 18:52:42 GMT
+  recorded_at: Wed, 06 Dec 2017 21:07:15 GMT
 - request:
     method: get
-    uri: https://api.github.com/user/repos
+    uri: https://api.github.com/search/commits?q=author:randy-darsh&sort=author-date
     body:
       encoding: US-ASCII
       string: ''
     headers:
       Authorization:
       - token
+      Accept:
+      - application/vnd.github.cloak-preview
       User-Agent:
       - Faraday v0.12.2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 401
@@ -147,7 +147,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 06 Dec 2017 18:52:42 GMT
+      - Wed, 06 Dec 2017 21:06:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -155,13 +155,13 @@ http_interactions:
       Status:
       - 401 Unauthorized
       X-Github-Media-Type:
-      - github.v3; format=json
+      - github.cloak-preview
       X-Ratelimit-Limit:
-      - '60'
+      - '10'
       X-Ratelimit-Remaining:
-      - '33'
+      - '9'
       X-Ratelimit-Reset:
-      - '1512589454'
+      - '1512594477'
       Access-Control-Expose-Headers:
       - ETag, Link, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
@@ -178,12 +178,12 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Runtime-Rack:
-      - '0.011225'
+      - '0.016578'
       X-Github-Request-Id:
-      - DC03:31B0:230A62:4432E5:5A283C7A
+      - E872:31B0:391581:6EDF2B:5A285BF1
     body:
       encoding: UTF-8
       string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Wed, 06 Dec 2017 18:52:42 GMT
+  recorded_at: Wed, 06 Dec 2017 21:07:16 GMT
 recorded_with: VCR 4.0.0
