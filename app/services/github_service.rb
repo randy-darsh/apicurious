@@ -21,7 +21,7 @@ class GithubService
 
   def recent_commits
     response = connection.get("/search/commits?q=author:#{user.nickname}&sort=author-date")
-    JSON.parse(response.body, symbolize_names: true)[:items][0..9]
+    JSON.parse(response.body, symbolize_names: true)[:items][0..14]
   end
 
   def following_users
@@ -36,8 +36,8 @@ class GithubService
   def recent_following_commits
     following_commits = {}
     following_users.each do |user_nickname|
-      response = conn.get("/search/commits?q=author:#{user_nickname}&sort=author-date")
-      following_commits[user_nickname] = JSON.parse(response.body, symbolize_names: true)[:items][0..2]
+      response = connection.get("/search/commits?q=author:#{user_nickname}&sort=author-date")
+      following_commits[user_nickname] = JSON.parse(response.body, symbolize_names: true)[:items][0..4]
     end
     following_commits
   end

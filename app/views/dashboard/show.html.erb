@@ -27,3 +27,16 @@
     <p><%= repo[:updated_at] %></p><br>
   </li>
 <% end %>
+<br>
+<br>
+<h3><b>Users You Follow Activity</b></h3>
+<% @users_followed_commits.each do |user, commits| %>
+  <p><b><%= user %></b></p><br>
+    <% commits.each do |commit| %>
+      <li>
+        <p><b><%= commit[:repository][:full_name] %></b></p>
+        <p><%= commit[:commit][:message] %></p>
+        <p><%= commit[:commit][:author][:date] %></p><br>
+      </li>
+    <% end %>
+<% end %>
