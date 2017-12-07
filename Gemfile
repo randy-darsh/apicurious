@@ -15,6 +15,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'faraday'
 gem 'omniauth-github'
 gem 'figaro'
+gem 'database_cleaner'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
