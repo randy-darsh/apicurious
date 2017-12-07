@@ -10,45 +10,44 @@ class GithubService
   end
 
   def user_information
-    response = connection.get('/user')
-    JSON.parse(response.body, symbolize_names: true)
+    get_json('/user')
   end
 
   def starred_repos_count
-    response = connection.get('/user/starred')
-    JSON.parse(response.body, symbolize_names: true).count
+    get_json('/user/starred').count
   end
 
   def recent_commits
-    response = connection.get("/search/commits?q=author:#{user.nickname}&sort=author-date")
-    JSON.parse(response.body, symbolize_names: true)[:items][0..14]
+    get_json("/search/commits?q=author:#{user.nickname}&sort=author-date")[:items][0..14]
   end
 
-  def following_users
-    following_users = []
-    response = connection.get("/users/#{user.nickname}/following")
-    JSON.parse(response.body, symbolize_names: true).each do |user|
-      following_users << user[:login]
+  def followed_users
+    followed_users = []
+    get_json("/users/#{user.nickname}/following").each do |user|
+      followed_users << user[:login]
     end
-    following_users
+    followed_users
   end
 
-  def recent_following_commits
-    following_commits = {}
-    following_users.each do |user_nickname|
-      response = connection.get("/search/commits?q=author:#{user_nickname}&sort=author-date")
-      following_commits[user_nickname] = JSON.parse(response.body, symbolize_names: true)[:items][0..4]
+  def recent_followed_commits
+    followed_commits = {}
+    followed_users.each do |user_nickname|
+      followed_commits[user_nickname] = get_json("/search/commits?q=author:#{user_nickname}&sort=author-date")[:items][0..4]
     end
-    following_commits
+    followed_commits
   end
 
   def repos
-    response = connection.get("/users/#{user.nickname}/repos?sort=updated")
-    JSON.parse(response.body, symbolize_names: true)
+    get_json("/users/#{user.nickname}/repos?sort=updated")
   end
 
   private
 
   attr_reader :connection, :user
+
+  def get_json(url)
+    response = connection.get(url)
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
 end
