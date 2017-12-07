@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "User can view basic account info" do
+describe "user logs in to their account" do
   before do
     omniauth_stub
   end
 
-  it "user can see their profile picture and other info" do
-    VCR.use_cassette("user_views_basic_info") do
+  it "user can see their profile info, commits, repos and follower activity" do
+    VCR.use_cassette("user_views_profile_info") do
       visit(root_path)
 
       click_on('Login with Github')
