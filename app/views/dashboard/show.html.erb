@@ -9,34 +9,40 @@
 <p><b>Starred Repos (<%= @starred_repos %>)</b></p>
 <br>
 <br>
-<h3><b>Your Recent Commits</b></h3>
+<h3><b>Your Recent Commits</b></h3><br>
 <% @recent_commits.each do |commit| %>
-  <li>
-    <p><b><%= commit[:repository][:full_name] %></b></p>
-    <p><%= commit[:commit][:message] %></p>
-    <p><%= commit[:commit][:author][:date] %></p><br>
-  </li>
+  <ul>
+    <li>
+      <p><b><%= commit[:repository][:full_name] %></b></p>
+      <p><%= commit[:commit][:message] %></p>
+      <p><%= commit[:commit][:author][:date] %></p><br>
+    </li>
+  </ul>
 <% end %>
 <br>
 <br>
-<h3><b>Your Repositories (<%= @repos.count %>)</b></h3>
+<h3><b>Your Repositories (<%= @repos.count %>)</b></h3><br>
 <% @repos.each do |repo| %>
-  <li>
-    <p><b><%= repo[:full_name] %></b></p>
-    <p><%= repo[:language] %></p>
-    <p><%= repo[:updated_at] %></p><br>
-  </li>
+  <ul>
+    <li>
+      <p><b><%= repo[:full_name] %></b></p>
+      <p><%= repo[:language] %></p>
+      <p><%= repo[:updated_at] %></p><br>
+    </li>
+  </ul>
 <% end %>
 <br>
 <br>
-<h3><b>Users You Follow Activity</b></h3>
+<h3><b>Users You Follow Activity</b></h3><br>
 <% @users_followed_commits.each do |user, commits| %>
   <p><b><%= user %></b></p><br>
     <% commits.each do |commit| %>
-      <li>
-        <p><b><%= commit[:repository][:full_name] %></b></p>
-        <p><%= commit[:commit][:message] %></p>
-        <p><%= commit[:commit][:author][:date] %></p><br>
-      </li>
+      <ul>
+        <li>
+          <p><b><%= commit[:repository][:full_name] %></b></p>
+          <p><%= commit[:commit][:message] %></p>
+          <p><%= commit[:commit][:author][:date] %></p><br>
+        </li>
+      </ul>
     <% end %>
 <% end %>
